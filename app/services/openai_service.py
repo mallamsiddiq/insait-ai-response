@@ -5,11 +5,16 @@ import random
 
 # Fallback random texts
 random_texts = [
-    "Randomly generated text 1",
-    "Randomly generated text 2",
-    "Randomly generated text 3",
-    "Randomly generated text 4",
+    "I'm here to help! What can I do for you today?",
+    "It looks like I can't reach OpenAI right now, but I'm still here to assist!",
+    "Let's keep things rolling! What would you like to ask?",
+    "Something seems off, but I’m still ready to chat!",
+    "I may not have AI superpowers right now, but I can still try my best!",
+    "Having a bit of trouble reaching OpenAI—how else can I assist?",
+    "Technical hiccups happen, but I'm still here for you!",
+    "Looks like my brain isn't fully online—ask me anyway!",
 ]
+
 
 def generate_openai_response(prompt):
     openai_api_key = current_app.config.get('OPENAI_API_KEY')
