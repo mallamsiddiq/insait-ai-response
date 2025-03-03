@@ -17,10 +17,11 @@ docker compose up -d --build
 ```
 This will build and start the necessary containers for the application.
 
-## Unit testtind
+## Unit Testting
 
-I have added a couple of test cases that covers edge cases
+I have added a couple of test suites that covers edge cases
 simply run
+
 ```sh
 docker compose exec app pytest tests/
 ```
