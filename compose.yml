@@ -21,8 +21,8 @@ services:
     environment:
       FLASK_ENV: development
       FLASK_APP: run.py
-      OPENAI_API_KEY: your-openai-key
-      SQLALCHEMY_DATABASE_URI: postgresql://postgres:password@db:5432/ai_text_db
+      OPENAI_API_KEY:
+      SQLALCHEMY_DATABASE_URI: postgresql://postgres:password@host.docker.internal/ai_text_db
       JWT_IDENTITY_CLAIM: your-jwt-secret-key
     ports:
       - "5000:5000"
