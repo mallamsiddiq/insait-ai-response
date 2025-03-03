@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ai_text_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: run.py
+      OPENAI_API_KEY: your-openai-key
+      SQLALCHEMY_DATABASE_URI: postgresql://postgres:password@db:5432/ai_text_db
+      JWT_IDENTITY_CLAIM: your-jwt-secret-key
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
