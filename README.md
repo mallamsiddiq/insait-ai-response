@@ -17,6 +17,15 @@ docker compose up -d --build
 ```
 This will build and start the necessary containers for the application.
 
+## Unit testtind
+
+I have added a couple of test cases that covers edge cases
+simply run
+```sh
+docker compose exec app pytest tests/
+```
+
+
 ## Swagger Documentation
 The API documentation is available at the base URL `/` on port `5000`. Access it in your browser to explore and test the endpoints.
 
