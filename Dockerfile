@@ -10,20 +10,18 @@ WORKDIR /app
 
 COPY requirements.txt /app/
 
-# update pip
+# Install dependencies
 RUN pip install --upgrade pip
-
-# Install the project dependencies using Poetry
 RUN pip install -r requirements.txt
+
+# Install pg_isready and bash
+RUN apk add --no-cache bash postgresql-client
 
 # Copy the rest of the application code into the container
 COPY . /app/
 
-RUN alembic upgrade head
-
 # Expose the port the app will run on
 EXPOSE 5000
 
-
-# Command to run the application (assuming run.py is your entry point)
-CMD ["python", "run.py"]
+# Wait for the PostgreSQL database to be ready
+CMD ["sh", "-c", "until pg_isready -h db -p 5432; do echo 'Waiting for database...'; sleep 2; done; alembic upgrade head; python run.py"]
